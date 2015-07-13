@@ -4,6 +4,7 @@ config=$1
 source $config
 source functions.sh
 
+install_tooling
 prepare_dirs $location
 
 # detect partition type
@@ -28,7 +29,7 @@ make_sshd_config $location/mnt/etc/ssh/sshd_config
 
 make_grub_conf $location/mnt/boot/grub "(hd0)" hvc0 $uuid
 
-unmount_image
+unmount_image $location/mnt
 
 bundle_image $location/out/$name $name $location/out ""
 upload_bundle $location/out/${name}.manifest.xml $s3_location
