@@ -1,15 +1,15 @@
 #!/bin/bash
 
 function install_tooling {
-  yum -y update
+  # yum -y update
   # disable Selinux
   setenforce Permissive
   yum install -y gdisk patch curl wget ruby unzip vim
   # ec2-ami-tools
-  if [ ! -f ec2-ami-tools-1.5.3.noarch.rpm ];
+  if [ ! -f ec2-ami-tools-1.5.7.noarch.rpm ];
   then
-    curl -O http://s3.amazonaws.com/ec2-downloads/ec2-ami-tools-1.5.3.noarch.rpm
-    rpm -ivh ec2-ami-tools-1.5.3.noarch.rpm
+    curl -O http://s3.amazonaws.com/ec2-downloads/ec2-ami-tools-1.5.7.noarch.rpm
+    rpm -ivh ec2-ami-tools-1.5.7.noarch.rpm
   fi
 
   # ec2-api-tools
@@ -42,12 +42,12 @@ function install_tooling {
   fi
 
   # Grub Legacy for PV-grub compatibility
-  if [ ! -f grub-0.97-83.el6.x86 ];
+  if [ ! -f grub-0.97-93.el6.x86_64.rpm ];
   then
-    wget http://mirror.centos.org/centos/6/os/x86_64/Packages/grub-0.97-83.el6.x86_64.rpm
+    wget http://mirror.centos.org/centos/6/os/x86_64/Packages/grub-0.97-93.el6.x86_64.rpm
     mkdir -p grub
     rm -rf grub/*
-    pushd grub && rpm2cpio ../grub-0.97-83.el6.x86_64.rpm | cpio -idmv && popd
+    pushd grub && rpm2cpio ../grub-0.97-93.el6.x86_64.rpm | cpio -idmv && popd
     cp -a grub/sbin/* /sbin/
     cp -a grub/usr/* /usr/
   fi
@@ -96,7 +96,7 @@ mkdir -p $HOME/.aws
 cat > $HOME/.aws/config <<EOF
 [default]
 output = json
-region = eu-west-1
+region = us-east-1
 aws_access_key_id = $access_key
 aws_secret_access_key = $secret_key
 EOF
