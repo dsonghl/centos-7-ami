@@ -307,6 +307,7 @@ function copy_root_to_chroot {
 function install_packages_in_chroot {
   local image_root=$1
   local chroot=$2
+  local mount_point=$2
   cat > $image_root/yum-xen.conf <<EOF
 [base]
 name=CentOS-7 - Base
@@ -495,7 +496,7 @@ function bundle_image {
 function upload_bundle {
   local image_manifest=$1
   local dest=$2
-  RUBYLIB=/usr/lib/ruby/site_ruby/ ec2-upload-bundle --bucket $dest --manifest $image_manifest --access-key $access_key --secret-key $secret_key --retry --region $region
+  RUBYLIB=/usr/lib/ruby/site_ruby/ ec2-upload-bundle --bucket $dest --manifest $image_manifest --access-key $access_key --secret-key $secret_key --retry --region us-east-1
 }
 
 function register_image {
