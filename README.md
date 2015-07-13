@@ -39,8 +39,8 @@ You need
 
 * Login to a Centos 7 VM (Virtualbox, etc)
 * Edit config_aws, config_pv_raw with the necessary parameters
-* `source {functions.sh,config_aws,config_pv_raw`
-* `bash build-image.sh`. Run the script. Very little testing was needed, so you might be better off copying the commands and checking for errors. Problematic steps are grub installation. 
+* `source {functions.sh,config_aws,config_pv_raw}`
+* `bash build-image.sh config_pv_raw`. Run the script. Very little testing was needed, so you might be better off copying the commands and checking for errors. Problematic steps are grub installation. 
 
 ## Creating a HVM Image
 
