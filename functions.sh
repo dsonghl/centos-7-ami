@@ -381,7 +381,7 @@ EOF
 rpm -qa > $image_root/rpms.txt
 yum -c $image_root/yum-xen.conf --installroot=$chroot install `cat $image_root/rpms.txt`
 # install necessary packages
-yum -c $image_root/yum-xen.conf --installroot=$chroot -y install dhclient grub e2fsprogs selinux-policy selinux-policy-targeted chrony cloud-utils-growpart cloud-init
+yum -c $image_root/yum-xen.conf --installroot=$chroot -y install dhclient grub e2fsprogs selinux-policy selinux-policy-targeted chrony cloud-utils-growpart cloud-init openssh-server
 
 /usr/sbin/chroot $mount_point /bin/systemctl enable acpid
 /usr/sbin/chroot $mount_point /bin/systemctl enable sshd
