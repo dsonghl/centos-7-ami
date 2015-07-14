@@ -496,7 +496,7 @@ function bundle_image {
 function upload_bundle {
   local image_manifest=$1
   local dest=$2
-  RUBYLIB=/usr/lib/ruby/site_ruby/ ec2-upload-bundle --url ${dest} --manifest $image_manifest --access-key $access_key --secret-key $secret_key --retry --region us-east-1
+  RUBYLIB=/usr/lib/ruby/site_ruby/ ec2-upload-bundle --bucket ${dest} --manifest $image_manifest --access-key $access_key --secret-key $secret_key --retry --region us-east-1
 }
 
 function register_image {
