@@ -228,6 +228,8 @@ title CentOS Linux ($kernelver) 7 (Core)
 	kernel /boot/vmlinuz-$kernelver ro root=UUID=$uuid console=$console LANG=en_US.UTF-8 loglvl=all sync_console console_to_ring earlyprintk=xen xen_emul_unplug=unnecessary xen_pv_hvm=enable
 	initrd /boot/initramfs-$kernelver.img
 EOF
+
+  ln -s /boot/grub/grub.conf $grub_dir/menu.lst
 }
 
 function make_image_grub_conf {
