@@ -8,7 +8,7 @@ install_tooling
 prepare_dirs $location
 
 # detect partition type
-uuid=$(/sbin/blkid -o value -s UUID /dev/xvda1)
+uuid=$(/sbin/blkid -o value -s UUID /dev/sda1)
 
 make_raw_image $location/out/$name $size $uuid
 # nouuid so that we don't throw errors
