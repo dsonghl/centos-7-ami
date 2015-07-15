@@ -510,7 +510,7 @@ function register_image {
   shift
   if [ $ami_type == "paravirtual" ]
   then
-    aws ec2 register-image --image-location $s3_location/$name.manifest.xml --name $name --region $region --architecture x86_64 --kernel $aki --virtualization-type pv $*
+    aws ec2 register-image --image-location $s3_location/$name.manifest.xml --name $name --region $region --architecture x86_64 --kernel $aki --virtualization-type paravirtual $*
   else
     echo aws ec2 register-image --image-location $s3_location/$name.manifest.xml --name $name --region $region --architecture x86_64 --virtualization-type hvm $*
     aws ec2 register-image --image-location $s3_location/$name.manifest.xml --name $name --region $region --architecture x86_64 --virtualization-type hvm $*
