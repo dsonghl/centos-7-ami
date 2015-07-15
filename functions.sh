@@ -214,11 +214,12 @@ EOF
 
 function make_grub_conf {
   local loc=$1
+  local grub_dir=$1
   local root=$2
   local console=$3
   local uuid=$4
   local kernelver=$(rpm -qa | grep '^kernel-3'  | sed -e 's/kernel-//' | head -n 1)
-  cat > $loc <<EOF
+  cat > $loc/grub.conf <<EOF
 default=0
 timeout=0
 hiddenmenu
